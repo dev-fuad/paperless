@@ -7,16 +7,20 @@
  * @format
  */
 
-import React from 'react';
-import { StyleSheet, View, ViewProps } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import React from "react";
+import { StyleSheet, View, ViewProps } from "react-native";
+
+import { useTheme } from "react-native-paper";
 
 const Background: React.FC<ViewProps> = (props) => {
   const theme = useTheme();
   const backgroundColor = theme.colors.background;
 
   return (
-    <View {...props} style={[styles.container, { backgroundColor }, props.style]} />
+    <View
+      {...props}
+      style={[styles.container, { backgroundColor }, props.style]}
+    />
   );
 };
 

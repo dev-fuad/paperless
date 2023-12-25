@@ -7,12 +7,14 @@
  * @format
  */
 
-import { useNavigation } from 'expo-router';
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Appbar, List, Switch } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useAppSettingsStore } from '@store/app-settings';
+import React from "react";
+import { StyleSheet } from "react-native";
+
+import { useNavigation } from "expo-router";
+import { Appbar, List, Switch } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { useAppSettingsStore } from "@store/app-settings";
 
 const Settings: React.FC = () => {
   const navigation = useNavigation();
@@ -22,15 +24,22 @@ const Settings: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Appbar.Header>
-        <Appbar.Action icon="chevron-left" mode="contained" onPress={navigation.goBack} />
+        <Appbar.Action
+          icon="chevron-left"
+          mode="contained"
+          onPress={navigation.goBack}
+        />
       </Appbar.Header>
 
-      <List.Item title="Dark Mode" right={() => (
-        <Switch
-          value={theme === 'dark'}
-          onValueChange={(value) => updateTheme(value ? 'dark' : 'light')}
-        />
-      )} />
+      <List.Item
+        title="Dark Mode"
+        right={() => (
+          <Switch
+            value={theme === "dark"}
+            onValueChange={(value) => updateTheme(value ? "dark" : "light")}
+          />
+        )}
+      />
     </SafeAreaView>
   );
 };

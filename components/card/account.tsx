@@ -7,19 +7,23 @@
  * @format
  */
 
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Card, IconButton, Text } from 'react-native-paper';
-import { Account } from '@models';
-import { formatAmount } from '@utils/formatter';
-import { findChange } from '@utils/miscellaneous';
-import { SCREEN_WIDTH } from '@utils/scale';
+import React from "react";
+import { StyleSheet } from "react-native";
+
+import { Card, IconButton, Text } from "react-native-paper";
+
+import { Account } from "@models";
+import { formatAmount } from "@utils/formatter";
+import { findChange } from "@utils/miscellaneous";
+import { SCREEN_WIDTH } from "@utils/scale";
 
 interface Props {
   account: Account;
 }
 
-const RightContent = (props) => <IconButton {...props} icon="arrow-top-right" mode="contained" />
+const RightContent = (props) => (
+  <IconButton {...props} icon="arrow-top-right" mode="contained" />
+);
 
 const AccountCard: React.FC<Props> = ({ account }) => {
   return (

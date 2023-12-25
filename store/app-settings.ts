@@ -7,16 +7,16 @@
  * @format
  */
 
-import { create } from 'zustand'
+import { create } from "zustand";
 
-type Theme = 'light' | 'dark' | 'automatic';
+type Theme = "light" | "dark" | "automatic";
 
 export interface AppSettingsState {
   theme: Theme;
-  updateTheme: (theme: Theme) => void;  
+  updateTheme: (theme: Theme) => void;
 }
 
 export const useAppSettingsStore = create<AppSettingsState>()((set) => ({
-  theme: 'automatic',
+  theme: "automatic",
   updateTheme: (theme) => set(() => ({ theme })),
-}))
+}));

@@ -1,1 +1,1 @@
-export { default as AppBackground } from './background';
+export { default as AppBackground } from "./background";

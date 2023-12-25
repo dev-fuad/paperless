@@ -7,13 +7,12 @@
  * @format
  */
 
-import React from 'react';
-import { default as HomeScreen } from './home';
+import React from "react";
+
+import { default as HomeScreen } from "./home";
 
 const App: React.FC = () => {
-  return (
-    <HomeScreen />
-  );
+  return <HomeScreen />;
 };
 
 export default App;
