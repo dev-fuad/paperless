@@ -2,7 +2,7 @@ import { Link } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import { Appbar, Button, Card, Text } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AccountCard, TransactionItem } from '../../components';
+import { AccountCard, TransactionItem } from '@components';
 
 const DUMMY_ACCOUNTS = [
   { id: 'acc_1', name: 'Account 1', openingBalance: 90000, closingBalance: 100000 },

@@ -10,10 +10,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, IconButton, Text } from 'react-native-paper';
-import { Account } from '../../models/account';
-import { formatAmount } from '../../utils/formatter';
-import { findChange } from '../../utils/miscellaneous';
-import { SCREEN_WIDTH } from '../../utils/scale';
+import { Account } from '@models';
+import { formatAmount } from '@utils/formatter';
+import { findChange } from '@utils/miscellaneous';
+import { SCREEN_WIDTH } from '@utils/scale';
 
 interface Props {
   account: Account;

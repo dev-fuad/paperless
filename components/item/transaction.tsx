@@ -9,8 +9,8 @@
 
 import React from 'react';
 import { List, Text } from 'react-native-paper';
-import { Transaction } from '../../models/transaction';
-import { formatAmount } from '../../utils/formatter';
+import { Transaction } from '@models';
+import { formatAmount } from '@utils/formatter';
 
 interface Props {
   transaction: Transaction;

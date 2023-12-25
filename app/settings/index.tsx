@@ -12,7 +12,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Appbar, List, Switch } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useAppSettingsStore } from '../../store/app-settings';
+import { useAppSettingsStore } from '@store/app-settings';
 
 const Settings: React.FC = () => {
   const navigation = useNavigation();

@@ -11,8 +11,8 @@ import React from 'react';
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { Slot } from 'expo-router';
 import { useColorScheme } from 'react-native';
-import { useAppSettingsStore } from '../store/app-settings';
-import { AppBackground } from '../components';
+import { useAppSettingsStore } from '@store/app-settings';
+import { AppBackground } from '@components';
 
 const themes = {
   dark: {
