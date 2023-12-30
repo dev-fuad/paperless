@@ -1,50 +1,19 @@
 import { StyleSheet, View } from "react-native";
 
+import { AddAccountCard } from "@components/card/account";
 import { Link } from "expo-router";
-import { Appbar, Button, Card, Text } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Appbar, Button, Card, Text, useTheme } from "react-native-paper";
+import { DUMMY_ACCOUNTS, DUMMY_TRANSACTIONS } from "services/dummy-data";
 
 import { AccountCard, TransactionItem } from "@components";
 
-const DUMMY_ACCOUNTS = [
-  {
-    id: "acc_1",
-    name: "Account 1",
-    openingBalance: 90000,
-    closingBalance: 100000,
-  },
-  {
-    id: "acc_2",
-    name: "Account 2",
-    openingBalance: 1000000,
-    closingBalance: 850000,
-  },
-  {
-    id: "acc_3",
-    name: "Account 3",
-    openingBalance: 50000,
-    closingBalance: 90000,
-  },
-];
-
-const DUMMY_TRANSACTIONS = [
-  { id: "txn_1", name: "To Mr. Chal Han", amount: 2000000, isCredit: false },
-  { id: "txn_2", name: "Refund From Koppee", amount: 2000000, isCredit: true },
-  { id: "txn_3", name: "To F&G Inc.", amount: 2000000, isCredit: false },
-  { id: "txn_4", name: "To Elec Bill", amount: 2000000, isCredit: false },
-];
-
 export default function Page() {
+  const theme = useTheme();
+
   return (
-    <SafeAreaView>
+    <View style={styles.container}>
       <Appbar.Header>
-        <Appbar.Action icon="chevron-left" mode="contained" />
-        <Appbar.Content title="" />
-        <Appbar.Action
-          icon="arrow-top-right"
-          mode="contained"
-          onPress={() => {}}
-        />
+        <Appbar.Content color={theme.colors.secondary} title="PAPERLESS" />
 
         <Link href="/settings/" asChild>
           <Appbar.Action icon="tune-vertical" mode="contained" />
@@ -60,9 +29,10 @@ export default function Page() {
         {DUMMY_ACCOUNTS.map((account) => (
           <AccountCard key={account.id} account={account} />
         ))}
+        <AddAccountCard />
       </View>
 
-      <Card mode="contained">
+      <Card mode="outlined" style={styles.bottomCard}>
         <Card.Title
           title="Transactions"
           right={() => <Button>View All</Button>}
@@ -73,22 +43,31 @@ export default function Page() {
           ))}
         </Card.Content>
       </Card>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   greetings: {
-    marginTop: 35,
-    marginBottom: 15,
+    marginBottom: 25,
     marginHorizontal: 10,
+    marginTop: 45,
   },
   cards: {
+    columnGap: 4,
     flexDirection: "row",
     flexWrap: "wrap",
     marginHorizontal: 10,
-    marginVertical: 10,
-    rowGap: 2,
-    columnGap: 2,
+    marginVertical: 20,
+    rowGap: 4,
+  },
+  bottomCard: {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    flex: 1,
+    marginBottom: -1,
   },
 });

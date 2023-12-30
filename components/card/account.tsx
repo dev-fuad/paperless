@@ -21,17 +21,26 @@ interface Props {
   account: Account;
 }
 
-const RightContent = (props) => (
-  <IconButton {...props} icon="arrow-top-right" mode="contained" />
+export const AddAccountCard: React.FC = () => {
+  return (
+    <Card mode="outlined" style={[styles.card, styles.center]}>
+      <IconButton icon="plus" mode="contained-tonal" />
+    </Card>
+  );
+};
+
+const ExpandButton = (props) => (
+  <IconButton {...props} icon="arrow-top-right" mode="contained-tonal" />
 );
 
 const AccountCard: React.FC<Props> = ({ account }) => {
   return (
-    <Card mode="contained" style={styles.card}>
+    <Card mode="outlined" style={styles.card}>
       <Card.Title
         title={formatAmount(account.closingBalance)}
         subtitle={findChange(account.closingBalance, account.openingBalance)}
-        right={RightContent}
+        right={ExpandButton}
+        rightStyle={styles.expandButton}
       />
       <Card.Content>
         <Text variant="titleLarge">{account.name}</Text>
@@ -42,7 +51,14 @@ const AccountCard: React.FC<Props> = ({ account }) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: (SCREEN_WIDTH - 22) / 2,
+    width: (SCREEN_WIDTH - 24) / 2,
+  },
+  expandButton: {
+    marginTop: -20,
+  },
+  center: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
