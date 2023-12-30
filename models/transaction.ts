@@ -37,3 +37,9 @@ export interface Transaction {
   frequncyModulation?: FrequencyModulations;
   modSequnce?: number[]; // Like (day, alternate, [2, 1]) -> every 2 days in 3 or (week, timesPerFrequency, [2]) -> twice a week
 }
+
+export const seedTransactionTypes: TransactionType[] = [
+  { id: "TxnType_1", name: "Other", group: TransactionGroup.expense },
+  { id: "TxnType_2", name: "Other", group: TransactionGroup.income },
+  { id: "TxnType_3", name: "Other", group: TransactionGroup.transfer },
+];

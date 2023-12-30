@@ -1,4 +1,9 @@
-import { Account, seedAccountType } from "@models";
+import {
+  Account,
+  Transaction,
+  seedAccountType,
+  seedTransactionTypes,
+} from "@models";
 
 export const DUMMY_ACCOUNTS: Account[] = [
   {
@@ -24,9 +29,33 @@ export const DUMMY_ACCOUNTS: Account[] = [
   },
 ];
 
-export const DUMMY_TRANSACTIONS = [
-  { id: "txn_1", name: "To Mr. Chal Han", amount: 2000000, isCredit: false },
-  { id: "txn_2", name: "Refund From Koppee", amount: 2000000, isCredit: true },
-  { id: "txn_3", name: "To F&G Inc.", amount: 2000000, isCredit: false },
-  { id: "txn_4", name: "To Elec Bill", amount: 2000000, isCredit: false },
+export const DUMMY_TRANSACTIONS: Transaction[] = [
+  {
+    id: "txn_1",
+    name: "To Mr. Chal Han",
+    amount: 2000000,
+    type: seedTransactionTypes[0],
+    date: "23122023-1845",
+  },
+  {
+    id: "txn_2",
+    name: "Refund From Koppee",
+    amount: 2000000,
+    type: seedTransactionTypes[1],
+    date: "23122023-1845",
+  },
+  {
+    id: "txn_3",
+    name: "To F&G Inc.",
+    amount: 2000000,
+    type: seedTransactionTypes[0],
+    date: "23122023-1845",
+  },
+  {
+    id: "txn_4",
+    name: "To Self",
+    amount: 2000000,
+    type: seedTransactionTypes[2],
+    date: "23122023-1845",
+  },
 ];
