@@ -13,7 +13,6 @@ import { useColorScheme } from "react-native";
 import { Stack } from "expo-router";
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from "react-native-paper";
 
-import { AppBackground } from "@components";
 import { useAppSettingsStore } from "@store/app-settings";
 
 const ROUNDNESS = 8;
