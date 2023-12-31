@@ -10,7 +10,7 @@
 import React from "react";
 import { useColorScheme } from "react-native";
 
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from "react-native-paper";
 
 import { AppBackground } from "@components";
@@ -48,7 +48,13 @@ const Layout: React.FC = () => {
   return (
     <PaperProvider theme={themes[theme === "automatic" ? colorScheme : theme]}>
       <AppBackground>
-        <Slot />
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="settings/index"
+            options={{ headerShown: false, animation: "fade" }}
+          />
+        </Stack>
       </AppBackground>
     </PaperProvider>
   );

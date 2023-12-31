@@ -3,9 +3,12 @@ import { StyleSheet, View } from "react-native";
 import { AddAccountCard } from "@components/card/account";
 import { Link } from "expo-router";
 import { Appbar, Button, Card, Text, useTheme } from "react-native-paper";
+import Animated from "react-native-reanimated";
 import { DUMMY_ACCOUNTS, DUMMY_TRANSACTIONS } from "services/dummy-data";
 
 import { AccountCard, TransactionItem } from "@components";
+
+const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 export default function Page() {
   const theme = useTheme();
@@ -16,7 +19,11 @@ export default function Page() {
         <Appbar.Content color={theme.colors.secondary} title="PAPERLESS" />
 
         <Link href="/settings/" asChild>
-          <Appbar.Action icon="tune-vertical" mode="contained" />
+          <AnimatedAction
+            sharedTransitionTag="actionIcon"
+            icon="tune-vertical"
+            mode="contained"
+          />
         </Link>
       </Appbar.Header>
 

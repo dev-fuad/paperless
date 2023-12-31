@@ -8,13 +8,15 @@
  */
 
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { useNavigation } from "expo-router";
 import { Appbar, List, Switch } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
+import Animated from "react-native-reanimated";
 
 import { useAppSettingsStore } from "@store/app-settings";
+
+const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 const Settings: React.FC = () => {
   const navigation = useNavigation();
@@ -22,9 +24,10 @@ const Settings: React.FC = () => {
   const updateTheme = useAppSettingsStore((state) => state.updateTheme);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Appbar.Header>
-        <Appbar.Action
+        <AnimatedAction
+          sharedTransitionTag="actionIcon"
           icon="chevron-left"
           mode="contained"
           onPress={navigation.goBack}
@@ -40,7 +43,7 @@ const Settings: React.FC = () => {
           />
         )}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
