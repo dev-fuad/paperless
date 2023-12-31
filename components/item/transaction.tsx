@@ -28,13 +28,13 @@ const TransactionItem: React.FC<Props> = ({ transaction }) => {
     };
     if (transaction.type.group === TransactionGroup.income) {
       result.icon = "bank-transfer-in";
-      result.color = theme.colors.primary;
+      result.color = theme.colors.secondary;
     } else if (transaction.type.group === TransactionGroup.transfer) {
       result.icon = "bank-transfer";
-      result.color = theme.colors.secondary;
+      result.color = theme.colors.primary;
     }
     return result;
-  }, [transaction.type.group]);
+  }, [theme.colors.primary, transaction.type.group]);
 
   return (
     <List.Item

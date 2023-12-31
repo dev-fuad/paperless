@@ -1,9 +1,6 @@
-import {
-  Account,
-  Transaction,
-  seedAccountType,
-  seedTransactionTypes,
-} from "@models";
+import { Account, Transaction } from "@models";
+
+import { seedAccountType, seedTransactionTypes } from "./seeds";
 
 export const DUMMY_ACCOUNTS: Account[] = [
   {

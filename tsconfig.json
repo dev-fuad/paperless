@@ -7,6 +7,7 @@
       "@store/*": ["store/*"],
       "@models": ["models/index"],
       "@models/*": ["models/*"],
+      "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
     }
   },

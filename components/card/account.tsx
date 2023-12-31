@@ -10,7 +10,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { Card, IconButton, Text } from "react-native-paper";
+import { Card, IconButton, Text, useTheme } from "react-native-paper";
 
 import { Account } from "@models";
 import { formatAmount } from "@utils/formatter";
@@ -22,9 +22,15 @@ interface Props {
 }
 
 export const AddAccountCard: React.FC = () => {
+  const theme = useTheme();
+  const backgroundColor = theme.colors.elevation.level1;
+
   return (
-    <Card mode="outlined" style={[styles.card, styles.center]}>
-      <IconButton icon="plus" mode="contained-tonal" />
+    <Card mode="outlined" style={[styles.card, { backgroundColor }]}>
+      <Card.Content style={styles.center}>
+        <IconButton icon="plus" mode="contained-tonal" />
+        <Text variant="titleLarge">Add Account</Text>
+      </Card.Content>
     </Card>
   );
 };

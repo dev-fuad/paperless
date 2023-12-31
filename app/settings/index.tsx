@@ -10,7 +10,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-import { useNavigation } from "expo-router";
+import { useRouter } from "expo-router";
 import { Appbar, List, Switch } from "react-native-paper";
 import Animated from "react-native-reanimated";
 
@@ -19,7 +19,7 @@ import { useAppSettingsStore } from "@store/app-settings";
 const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 const Settings: React.FC = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const theme = useAppSettingsStore((state) => state.theme);
   const updateTheme = useAppSettingsStore((state) => state.updateTheme);
 
@@ -30,7 +30,7 @@ const Settings: React.FC = () => {
           sharedTransitionTag="actionIcon"
           icon="chevron-left"
           mode="contained"
-          onPress={navigation.goBack}
+          onPress={router.back}
         />
       </Appbar.Header>
 

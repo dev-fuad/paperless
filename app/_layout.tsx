@@ -45,17 +45,18 @@ const Layout: React.FC = () => {
   const colorScheme = useColorScheme();
   const theme = useAppSettingsStore((state) => state.theme);
 
+  const selectedTheme = themes[theme === "automatic" ? colorScheme : theme];
+  const backgroundColor = selectedTheme.colors.background;
+
   return (
-    <PaperProvider theme={themes[theme === "automatic" ? colorScheme : theme]}>
-      <AppBackground>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="settings/index"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-        </Stack>
-      </AppBackground>
+    <PaperProvider theme={selectedTheme}>
+      <Stack screenOptions={{ contentStyle: { backgroundColor } }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="settings/index"
+          options={{ headerShown: false, animation: "fade" }}
+        />
+      </Stack>
     </PaperProvider>
   );
 };
