@@ -7,6 +7,9 @@
  * @format
  */
 
+// polyfill
+import "polyfill/groupBy";
+
 import React from "react";
 import { useColorScheme } from "react-native";
 
@@ -54,6 +57,14 @@ const Layout: React.FC = () => {
         <Stack.Screen
           name="settings/index"
           options={{ headerShown: false, animation: "fade" }}
+        />
+        <Stack.Screen
+          name="account/create-account"
+          options={{
+            headerShown: false,
+            presentation: "transparentModal",
+            animation: "fade",
+          }}
         />
       </Stack>
     </PaperProvider>

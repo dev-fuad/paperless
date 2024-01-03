@@ -7,15 +7,16 @@
  * @format
  */
 
-import React from "react";
+import React, { useCallback } from "react";
 import { StyleSheet } from "react-native";
 
+import { useRouter } from "expo-router";
 import { Card, IconButton, Text, useTheme } from "react-native-paper";
 
 import { Account } from "@models";
 import { formatAmount } from "@utils/formatter";
 import { findChange } from "@utils/miscellaneous";
-import { SCREEN_WIDTH } from "@utils/scale";
+import { SCREEN_WIDTH, isWideScreen } from "@utils/scale";
 
 interface Props {
   account: Account;
@@ -23,10 +24,19 @@ interface Props {
 
 export const AddAccountCard: React.FC = () => {
   const theme = useTheme();
+  const router = useRouter();
   const backgroundColor = theme.colors.elevation.level1;
 
+  const onAddCardPress = useCallback(() => {
+    router.push("/account/create-account");
+  }, []);
+
   return (
-    <Card mode="outlined" style={[styles.card, { backgroundColor }]}>
+    <Card
+      mode="outlined"
+      style={[styles.card, { backgroundColor }]}
+      onPress={onAddCardPress}
+    >
       <Card.Content style={styles.center}>
         <IconButton icon="plus" mode="contained-tonal" />
         <Text variant="titleLarge">Add Account</Text>
@@ -57,7 +67,7 @@ const AccountCard: React.FC<Props> = ({ account }) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: (SCREEN_WIDTH - 24) / 2,
+    width: isWideScreen ? 200 : (SCREEN_WIDTH - 24) / 2,
   },
   expandButton: {
     marginTop: -20,
