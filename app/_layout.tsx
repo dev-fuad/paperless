@@ -15,8 +15,11 @@ import { useColorScheme } from "react-native";
 
 import { Stack } from "expo-router";
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from "react-native-paper";
+import { enGB, registerTranslation } from "react-native-paper-dates";
 
 import { useAppSettingsStore } from "@store/app-settings";
+
+registerTranslation("en-GB", enGB);
 
 const ROUNDNESS = 8;
 

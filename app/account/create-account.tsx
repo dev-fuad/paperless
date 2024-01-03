@@ -10,7 +10,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { SelectInput, TextInput } from "@components";
+import { DatetimePicker, SelectInput, TextInput } from "@components";
 import { useAccountStore } from "@store/account";
 
 interface Props {}
@@ -23,6 +23,7 @@ const CreateAccount: React.FC<Props> = () => {
   const accountTypes = useAccountStore((state) => state.accountTypes);
   const [accountName, setAccountName] = useState("");
   const [accountType, setAccountType] = useState("");
+  const [openingDate, setOpeningDate] = useState<Date | undefined>(undefined);
 
   return (
     <View style={styles.container}>
@@ -43,7 +44,11 @@ const CreateAccount: React.FC<Props> = () => {
         onSelect={setAccountType}
       />
 
-      <TextInput mode="outlined" label="Opening Date" />
+      <DatetimePicker
+        label="Opening Date"
+        selectedDate={openingDate}
+        onSelect={setOpeningDate}
+      />
 
       <TextInput mode="outlined" label="Starting Balance" />
 

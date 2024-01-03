@@ -14,14 +14,13 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Keyboard, Pressable } from "react-native";
 
 import { Divider, Menu, Text, useTheme } from "react-native-paper";
 
+import BasePicker from "./base-picker";
 import TextInput from "./text-input";
 
 interface Props<Option> extends React.ComponentPropsWithRef<typeof TextInput> {
-  innerRef?: React.Ref<typeof TextInput>;
   items: Option[];
   selected?: Option;
   getKey: (item: Option) => string;
@@ -47,7 +46,6 @@ function SelectInput<T>(props: Props<T>, ref) {
   }, []);
 
   const toggleOptions = useCallback(() => {
-    Keyboard.dismiss();
     setIsOpen((open) => !open);
   }, []);
 
@@ -76,19 +74,13 @@ function SelectInput<T>(props: Props<T>, ref) {
       onDismiss={closeOptions}
       anchorPosition="bottom"
       anchor={
-        <Pressable onLayout={onLayout} onPress={toggleOptions}>
-          <TextInput
-            ref={(_ref) => {
-              ref = _ref;
-            }}
-            editable={false}
-            right={
-              <TextInput.Icon icon="chevron-down" onPress={toggleOptions} />
-            }
-            {...props}
-            value={props.getLabel(props.selected)}
-          />
-        </Pressable>
+        <BasePicker
+          innerRef={ref}
+          pressableProps={{ onLayout }}
+          onPress={toggleOptions}
+          value={props.getLabel(props.selected)}
+          {...props}
+        />
       }
     >
       {props.groupBy
