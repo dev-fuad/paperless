@@ -14,7 +14,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Pressable } from "react-native";
+import { Keyboard, Pressable } from "react-native";
 
 import { Divider, Menu, Text, useTheme } from "react-native-paper";
 
@@ -46,13 +46,20 @@ function SelectInput<T>(props: Props<T>, ref) {
     setItemWidth(nativeEvent.layout?.width);
   }, []);
 
+  const toggleOptions = useCallback(() => {
+    Keyboard.dismiss();
+    setIsOpen((open) => !open);
+  }, []);
+
+  const closeOptions = useCallback(() => setIsOpen(false), []);
+
   const renderItem = useCallback(
     (item) => (
       <Menu.Item
         key={props.getKey(item)}
         style={{ width: itemWidth }}
         onPress={() => {
-          setIsOpen(false);
+          closeOptions();
           props.onSelect(item);
         }}
         title={props.getLabel(item)}
@@ -66,23 +73,17 @@ function SelectInput<T>(props: Props<T>, ref) {
   return (
     <Menu
       visible={isOpen}
-      onDismiss={() => setIsOpen(false)}
+      onDismiss={closeOptions}
       anchorPosition="bottom"
       anchor={
-        <Pressable
-          onLayout={onLayout}
-          onPress={() => setIsOpen((open) => !open)}
-        >
+        <Pressable onLayout={onLayout} onPress={toggleOptions}>
           <TextInput
             ref={(_ref) => {
               ref = _ref;
             }}
             editable={false}
             right={
-              <TextInput.Icon
-                icon="chevron-down"
-                onPress={() => setIsOpen((open) => !open)}
-              />
+              <TextInput.Icon icon="chevron-down" onPress={toggleOptions} />
             }
             {...props}
             value={props.getLabel(props.selected)}

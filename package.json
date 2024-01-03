@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scheme": "paperless",
+  "author": {
+    "name": "Fuad Mohammed Firoz",
+    "email": "fuad@live.in"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-fuad/paperless"
+  },
+  "icon": "./assets/icon.png",
+  "homepage": "https://github.com/dev-fuad/paperless#README",
   "private": true,
   "scripts": {
     "start": "expo start",
