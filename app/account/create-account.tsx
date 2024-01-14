@@ -10,7 +10,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { DatetimePicker, SelectInput, TextInput } from "@components";
+import { CalcInput, DatetimePicker, SelectInput, TextInput } from "@components";
 import { useAccountStore } from "@store/account";
 
 interface Props {}
@@ -24,6 +24,8 @@ const CreateAccount: React.FC<Props> = () => {
   const [accountName, setAccountName] = useState("");
   const [accountType, setAccountType] = useState("");
   const [openingDate, setOpeningDate] = useState<Date | undefined>(undefined);
+  const [openingBalance, setOpeningBalance] = useState("");
+  const [closingBalance, setClosingBalance] = useState("");
 
   return (
     <View style={styles.container}>
@@ -50,9 +52,17 @@ const CreateAccount: React.FC<Props> = () => {
         onSelect={setOpeningDate}
       />
 
-      <TextInput mode="outlined" label="Starting Balance" />
+      <CalcInput
+        label="Starting Balance"
+        value={openingBalance}
+        onChangeText={setOpeningBalance}
+      />
 
-      <TextInput mode="outlined" label="Closing Balance" />
+      <CalcInput
+        label="Closing Balance"
+        value={closingBalance}
+        onChangeText={setClosingBalance}
+      />
 
       <TextInput mode="outlined" label="Notes" />
     </View>

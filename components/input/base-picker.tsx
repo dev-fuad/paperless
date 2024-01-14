@@ -14,7 +14,7 @@ import { IconButtonProps } from "react-native-paper";
 
 import TextInput, { TextInputProps } from "./text-input";
 
-interface BasePickerProps extends TextInputProps {
+export interface BasePickerProps extends TextInputProps {
   innerRef?: Ref<typeof TextInput>;
   pressableProps?: PressableProps;
   icon?: IconButtonProps["icon"];
