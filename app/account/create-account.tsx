@@ -12,7 +12,7 @@ import { StyleSheet, View } from "react-native";
 
 import { useRouter } from "expo-router";
 import { Button } from "react-native-paper";
-import { v4 as uuid } from "uuid";
+import uuid from "react-native-uuid";
 
 import { CalcInput, DatetimePicker, SelectInput, TextInput } from "@components";
 import { Account, AccountType } from "@models";
@@ -37,7 +37,7 @@ const CreateAccount: React.FC<Props> = () => {
 
   const saveAccount = useCallback(() => {
     const account = {
-      id: uuid(),
+      id: uuid.v4(),
       openingBalance: Number(openingBalance) * 100,
       closingBalance: Number(closingBalance) * 100,
       name: accountName,
