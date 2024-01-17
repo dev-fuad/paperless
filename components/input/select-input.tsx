@@ -29,16 +29,29 @@ interface Props<Option> extends React.ComponentPropsWithRef<typeof TextInput> {
   onSelect: (item: Option) => void;
 }
 
-function SelectInput<T>(props: Props<T>, ref) {
+type GroupedDataType<T> = [string, T[]][];
+function isGroupedData<T>(data: any): data is GroupedDataType<T> {
+  return (
+    Array.isArray(data) && // data should be an Array and
+    (data.length === 0 || // either data is empty Array or
+      (data[0].length === 2 && // first element of data is Array of length 2
+        typeof data[0][0] === "string" && // whose first element is string
+        Array.isArray(data[0][1]))) // and second element is again an Array
+  );
+}
+
+function SelectInput<TOption>(props: Props<TOption>, ref) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [itemWidth, setItemWidth] = useState(undefined);
 
   const data = useMemo(() => {
     if (!props.groupBy) {
-      return props.items;
+      return props.items as TOption[];
     }
-    return Object.entries(Object.groupBy(props.items, props.groupBy));
+    return Object.entries(
+      Object.groupBy(props.items, props.groupBy),
+    ) as GroupedDataType<TOption>;
   }, [props.items]);
 
   const onLayout = useCallback(({ nativeEvent }) => {
@@ -52,7 +65,7 @@ function SelectInput<T>(props: Props<T>, ref) {
   const closeOptions = useCallback(() => setIsOpen(false), []);
 
   const renderItem = useCallback(
-    (item) => (
+    (item: TOption) => (
       <Menu.Item
         key={props.getKey(item)}
         style={{ width: itemWidth }}
@@ -83,7 +96,7 @@ function SelectInput<T>(props: Props<T>, ref) {
         />
       }
     >
-      {props.groupBy
+      {isGroupedData(data)
         ? data.map((([key, items]) => (
             <Fragment key={key}>
               <Text variant="bodyLarge" style={{ color }}>{`  ${key}`}</Text>

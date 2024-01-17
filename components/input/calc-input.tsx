@@ -17,7 +17,7 @@ import TextInput from "./text-input";
 
 interface Props extends BasePickerProps {}
 
-const NUMBERS = "1234567890".split("");
+const NUMBERS = "7894561230".split("");
 const OPERATORS = "+-*/".split("");
 
 const OPERABLE_ENDINGS = [...NUMBERS, ")", "%"];
@@ -95,6 +95,7 @@ const CalcInput: React.FC<Props> = (props) => {
   // to disable braces
   const cannotAddBraces = useMemo(
     () =>
+      expression !== "0" &&
       bracesCount === 0 &&
       [...NUMBERS, ".", ")"].includes(expression.trim().at(-1)),
     [bracesCount, expression],
@@ -123,7 +124,7 @@ const CalcInput: React.FC<Props> = (props) => {
     setExpression((exp) => {
       if (bracesCount === 0) {
         setBracesCount((braces) => braces + 1);
-        return exp.concat(" ( ");
+        return exp === "0" ? "( " : exp.concat(" ( ");
       }
       const tokens = exp.trimEnd().split(" ");
       const lastToken = tokens[tokens.length - 1];
@@ -153,7 +154,7 @@ const CalcInput: React.FC<Props> = (props) => {
   const onPressOperator = useCallback(
     (operator) => {
       if (operator in NUMBERS) {
-        setExpression((exp) => exp.concat(operator));
+        setExpression((exp) => (exp === "0" ? operator : exp.concat(operator)));
       } else if (OPERATORS.includes(operator)) {
         setExpression((exp) => exp.concat(` ${operator} `));
       } else {
@@ -174,7 +175,7 @@ const CalcInput: React.FC<Props> = (props) => {
                 return handleRemoveBracket(newExp);
               }
               newExp = newExp.slice(0, -1);
-              return newExp.trimEnd();
+              return newExp.trimEnd() || "0";
             });
             break;
           case "AC":
