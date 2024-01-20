@@ -250,7 +250,7 @@ const CalcInput: React.FC<Props> = (props) => {
                   <IconButton
                     key="="
                     mode="outlined"
-                    icon="equal"
+                    icon="subdirectory-arrow-left"
                     disabled={isNotOperableEnding}
                     onPress={() => onPressOperator("=")}
                   />

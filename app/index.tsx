@@ -9,6 +9,8 @@ import { AccountCard, TransactionItem } from "@components";
 import { useAccountStore } from "@store/account";
 import { useTransactionStore } from "@store/transaction";
 
+import FAB from "./FAB";
+
 const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 export default function Page() {
@@ -53,6 +55,7 @@ export default function Page() {
           ))}
         </Card.Content>
       </Card>
+      <FAB />
     </View>
   );
 }

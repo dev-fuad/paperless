@@ -69,6 +69,14 @@ const Layout: React.FC = () => {
             animation: "fade",
           }}
         />
+        <Stack.Screen
+          name="transaction/add-transaction"
+          options={{
+            headerShown: false,
+            presentation: "transparentModal",
+            animation: "fade",
+          }}
+        />
       </Stack>
     </PaperProvider>
   );

@@ -13,7 +13,7 @@ export enum FrequencyModulations {
 export enum TransactionGroup {
   income = "Income",
   expense = "Expense",
-  transfer = "Transsfer",
+  transfer = "Transfer",
 }
 
 export interface TransactionType {
