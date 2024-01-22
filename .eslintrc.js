@@ -14,7 +14,8 @@ module.exports = {
             position: "before",
           },
           {
-            pattern: "@{store/*,components,models,services/*,utils/*}",
+            pattern:
+              "@{store/*,components,models,services/*,utils/*,animations/*}",
             group: "internal",
             position: "before",
           },

@@ -15,6 +15,7 @@ export interface Account {
   openingBalance: number;
   closingBalance: number;
   name: string;
+  openingDate: string;
   type: AccountType;
 
   note?: string;

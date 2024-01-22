@@ -1,11 +1,10 @@
 import { StyleSheet, View } from "react-native";
 
-import { AddAccountCard } from "@components/card/account";
 import { Link } from "expo-router";
 import { Appbar, Button, Card, Text, useTheme } from "react-native-paper";
 import Animated from "react-native-reanimated";
 
-import { AccountCard, TransactionItem } from "@components";
+import { AccountCard, MoreAccountCard, TransactionItem } from "@components";
 import { useAccountStore } from "@store/account";
 import { useTransactionStore } from "@store/transaction";
 
@@ -15,8 +14,10 @@ const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 export default function Page() {
   const theme = useTheme();
-  const accounts = useAccountStore((state) => state.accounts);
-  const transactions = useTransactionStore((state) => state.transactions);
+  const accounts = useAccountStore((state) => state.accounts.slice(0, 3));
+  const transactions = useTransactionStore((state) =>
+    state.transactions.slice(0, 5),
+  );
 
   return (
     <View style={styles.container}>
@@ -41,7 +42,7 @@ export default function Page() {
         {accounts.map((account) => (
           <AccountCard key={account.id} account={account} />
         ))}
-        <AddAccountCard />
+        <MoreAccountCard />
       </View>
 
       <Card mode="outlined" style={styles.bottomCard}>

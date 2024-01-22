@@ -62,6 +62,10 @@ const Layout: React.FC = () => {
           options={{ headerShown: false, animation: "fade" }}
         />
         <Stack.Screen
+          name="account/index"
+          options={{ headerShown: false, animation: "fade" }}
+        />
+        <Stack.Screen
           name="account/create-account"
           options={{
             headerShown: false,

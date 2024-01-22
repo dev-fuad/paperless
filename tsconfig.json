@@ -9,6 +9,7 @@
       "@models/*": ["models/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
+      "@animations/*": ["animations/*"],
     }
   },
   "extends": "expo/tsconfig.base",

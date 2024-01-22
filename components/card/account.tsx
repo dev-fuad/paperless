@@ -12,34 +12,43 @@ import { StyleSheet } from "react-native";
 
 import { useRouter } from "expo-router";
 import { Card, IconButton, Text, useTheme } from "react-native-paper";
+import Animated from "react-native-reanimated";
 
+import { transition } from "@animations/view-all-accounts";
 import { Account } from "@models";
 import { formatAmount } from "@utils/formatter";
 import { findChange } from "@utils/miscellaneous";
 import { SCREEN_WIDTH, isWideScreen } from "@utils/scale";
 
+const AnimatedIcon = Animated.createAnimatedComponent(IconButton);
+
 interface Props {
   account: Account;
 }
 
-export const AddAccountCard: React.FC = () => {
+export const MoreAccountCard: React.FC = () => {
   const theme = useTheme();
   const router = useRouter();
   const backgroundColor = theme.colors.elevation.level1;
 
-  const onAddCardPress = useCallback(() => {
-    router.push("/account/create-account");
+  const onMoreCardPress = useCallback(() => {
+    router.push("/account/");
   }, []);
 
   return (
     <Card
       mode="outlined"
       style={[styles.card, { backgroundColor }]}
-      onPress={onAddCardPress}
+      onPress={onMoreCardPress}
     >
       <Card.Content style={styles.center}>
-        <IconButton icon="plus" mode="contained-tonal" />
-        <Text variant="titleLarge">Add Account</Text>
+        <AnimatedIcon
+          sharedTransitionTag="all-account-tag"
+          sharedTransitionStyle={transition}
+          icon="chevron-right"
+          mode="contained-tonal"
+        />
+        <Text variant="titleLarge">View All</Text>
       </Card.Content>
     </Card>
   );

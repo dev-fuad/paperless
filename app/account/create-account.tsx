@@ -42,13 +42,21 @@ const CreateAccount: React.FC<Props> = () => {
       closingBalance: Number(closingBalance) * 100,
       name: accountName,
       type: accountTypes.find((type) => type.id === accountType?.id),
+      openingDate: openingDate.toISOString(),
 
       note,
     } as Account;
 
     addAccount(account);
     router.back();
-  }, [openingBalance, closingBalance, accountName, accountType, note]);
+  }, [
+    openingBalance,
+    closingBalance,
+    accountName,
+    accountType,
+    openingDate,
+    note,
+  ]);
 
   const canSave = useMemo(
     () => accountName && accountType?.id,
