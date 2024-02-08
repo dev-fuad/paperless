@@ -11,22 +11,24 @@ import ReadSMSModule from "./src/ReadSMSModule";
 import ReadSMSView from "./src/ReadSMSView";
 
 // Get the native constant value.
-export const PI = ReadSMSModule.PI;
+export const SMS_READ = ReadSMSModule.SMS_READ;
+export const SUCCESS = ReadSMSModule.SUCCESS;
+export const ERROR = ReadSMSModule.ERROR;
 
-export function hello(): string {
-  return ReadSMSModule.hello();
+export function start(callback: (status: string) => void): void {
+  return ReadSMSModule.start(callback);
 }
 
-export async function setValueAsync(value: string) {
-  return await ReadSMSModule.setValueAsync(value);
-}
+// export async function setValueAsync(value: string) {
+//   return await ReadSMSModule.setValueAsync(value);
+// }
 
-const emitter = new EventEmitter(ReadSMSModule ?? NativeModulesProxy.ReadSMS);
+// const emitter = new EventEmitter(ReadSMSModule ?? NativeModulesProxy.ReadSMS);
 
-export function addChangeListener(
-  listener: (event: ChangeEventPayload) => void,
-): Subscription {
-  return emitter.addListener<ChangeEventPayload>("onChange", listener);
-}
+// export function addChangeListener(
+//   listener: (event: ChangeEventPayload) => void,
+// ): Subscription {
+//   return emitter.addListener<ChangeEventPayload>("onChange", listener);
+// }
 
 export { ReadSMSView, ReadSMSViewProps, ChangeEventPayload };

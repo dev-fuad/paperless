@@ -3,6 +3,13 @@ package expo.modules.readsms
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
+enum class ReadSMSStatus {
+  SMS_READ,
+  SUCCESS,
+  ERROR,
+}
+
+
 class ReadSMSModule : Module() {
   // Each module class must implement the definition function. The definition consists of components
   // that describes the module's functionality and behavior.
@@ -15,15 +22,17 @@ class ReadSMSModule : Module() {
 
     // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
     Constants(
-      "PI" to Math.PI
+      "SMS_READ" to ReadSMSStatus.SMS_READ.name,
+      "SUCCESS" to ReadSMSStatus.SUCCESS.name,
+      "ERROR" to ReadSMSStatus.ERROR.name,
     )
 
     // Defines event names that the module can send to JavaScript.
-    Events("onChange")
+    // Events("onChange")
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+    Function("start") { callback: (String) -> Unit ->
+      callback("Hello world! 👋")
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code
@@ -37,11 +46,11 @@ class ReadSMSModule : Module() {
 
     // Enables the module to be used as a native view. Definition components that are accepted as part of
     // the view definition: Prop, Events.
-    View(ReadSMSView::class) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { view: ReadSMSView, prop: String ->
-        println(prop)
-      }
-    }
+    // View(ReadSMSView::class) {
+    //   // Defines a setter for the `name` prop.
+    //   Prop("name") { view: ReadSMSView, prop: String ->
+    //     println(prop)
+    //   }
+    // }
   }
 }

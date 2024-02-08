@@ -24,6 +24,13 @@ export default function Page() {
       <Appbar.Header>
         <Appbar.Content color={theme.colors.secondary} title="PAPERLESS" />
 
+        <Link href="/messages/" asChild>
+          <AnimatedAction
+            sharedTransitionTag="actionIcon"
+            icon="message-text-outline"
+            mode="contained"
+          />
+        </Link>
         <Link href="/settings/" asChild>
           <AnimatedAction
             sharedTransitionTag="actionIcon"

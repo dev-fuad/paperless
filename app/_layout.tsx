@@ -55,20 +55,19 @@ const Layout: React.FC = () => {
 
   return (
     <PaperProvider theme={selectedTheme}>
-      <Stack screenOptions={{ contentStyle: { backgroundColor } }}>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="settings/index"
-          options={{ headerShown: false, animation: "fade" }}
-        />
-        <Stack.Screen
-          name="account/index"
-          options={{ headerShown: false, animation: "fade" }}
-        />
+      <Stack
+        screenOptions={{
+          contentStyle: { backgroundColor },
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="messages/index" />
+        <Stack.Screen name="settings/index" options={{ animation: "fade" }} />
+        <Stack.Screen name="account/index" options={{ animation: "fade" }} />
         <Stack.Screen
           name="account/create-account"
           options={{
-            headerShown: false,
             presentation: "transparentModal",
             animation: "fade",
           }}
@@ -76,7 +75,6 @@ const Layout: React.FC = () => {
         <Stack.Screen
           name="transaction/add-transaction"
           options={{
-            headerShown: false,
             presentation: "transparentModal",
             animation: "fade",
           }}
