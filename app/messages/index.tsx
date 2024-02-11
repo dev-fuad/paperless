@@ -16,7 +16,9 @@ interface Props {}
 
 const Messages: React.FC<Props> = () => {
   useEffect(() => {
-    start((init_status: string) => console.log(init_status));
+    start().then((res) => {
+      console.log(res);
+    });
   }, []);
 
   return (

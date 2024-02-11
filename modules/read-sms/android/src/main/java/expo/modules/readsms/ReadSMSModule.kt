@@ -31,8 +31,8 @@ class ReadSMSModule : Module() {
     // Events("onChange")
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("start") { callback: (String) -> Unit ->
-      callback("Hello world! 👋")
+    AsyncFunction("start") { 
+      return@AsyncFunction "Hello world! 👋"
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code
