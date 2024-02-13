@@ -10,14 +10,14 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { start } from "modules/read-sms";
+import { getMessages } from "modules/read-sms";
 
 interface Props {}
 
 const Messages: React.FC<Props> = () => {
   useEffect(() => {
-    start().then((res) => {
-      console.log(res);
+    getMessages().then((res) => {
+      console.log(res.map((item) => item.body).join("\n"));
     });
   }, []);
 
