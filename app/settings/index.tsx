@@ -12,11 +12,9 @@ import { StyleSheet, View } from "react-native";
 
 import { useRouter } from "expo-router";
 import { Appbar, List, Switch } from "react-native-paper";
-import Animated from "react-native-reanimated";
 
+import { AppbarAction } from "@components";
 import { useAppSettingsStore } from "@store/app-settings";
-
-const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 const Settings: React.FC = () => {
   const router = useRouter();
@@ -26,7 +24,7 @@ const Settings: React.FC = () => {
   return (
     <View style={styles.container}>
       <Appbar.Header>
-        <AnimatedAction
+        <AppbarAction
           sharedTransitionTag="actionIcon"
           icon="chevron-left"
           mode="contained"

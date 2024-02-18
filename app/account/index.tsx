@@ -8,17 +8,14 @@
  */
 
 import React from "react";
-import { StyleSheet, FlatList, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 
 import { useRouter } from "expo-router";
 import { Appbar } from "react-native-paper";
-import Animated from "react-native-reanimated";
 
 import { transition } from "@animations/view-all-accounts";
-import { AccountItem } from "@components";
+import { AccountItem, AppbarAction } from "@components";
 import { useAccountStore } from "@store/account";
-
-const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 interface Props {}
 
@@ -29,7 +26,7 @@ const Index: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <Appbar.Header>
-        <AnimatedAction
+        <AppbarAction
           sharedTransitionTag="all-account-tag"
           sharedTransitionStyle={transition}
           icon="chevron-left"

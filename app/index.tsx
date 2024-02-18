@@ -2,15 +2,17 @@ import { StyleSheet, View } from "react-native";
 
 import { Link } from "expo-router";
 import { Appbar, Button, Card, Text, useTheme } from "react-native-paper";
-import Animated from "react-native-reanimated";
 
-import { AccountCard, MoreAccountCard, TransactionItem } from "@components";
+import {
+  AccountCard,
+  AppbarAction,
+  MoreAccountCard,
+  TransactionItem,
+} from "@components";
 import { useAccountStore } from "@store/account";
 import { useTransactionStore } from "@store/transaction";
 
 import FAB from "./FAB";
-
-const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 export default function Page() {
   const theme = useTheme();
@@ -25,10 +27,14 @@ export default function Page() {
         <Appbar.Content color={theme.colors.secondary} title="PAPERLESS" />
 
         <Link href="/messages/" asChild>
-          <AnimatedAction icon="message-text-outline" mode="contained" />
+          <AppbarAction
+            sharedTransitionTag="messagesActionIcon"
+            icon="message-text-outline"
+            mode="contained"
+          />
         </Link>
         <Link href="/settings/" asChild>
-          <AnimatedAction
+          <AppbarAction
             sharedTransitionTag="actionIcon"
             icon="tune-vertical"
             mode="contained"

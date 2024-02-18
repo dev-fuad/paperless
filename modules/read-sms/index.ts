@@ -42,4 +42,4 @@ export async function getMessages(lastRead?: string): Promise<SMS[]> {
 //   return emitter.addListener<RecieveEventPayload>("onRecieve", listener);
 // }
 
-// export { RecieveEventPayload };
+export { SMS, SMSType };

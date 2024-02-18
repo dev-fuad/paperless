@@ -11,15 +11,18 @@ import React, { useCallback, useMemo, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useRouter } from "expo-router";
-import { Appbar, Button, SegmentedButtons } from "react-native-paper";
-import Animated from "react-native-reanimated";
+import { Button, SegmentedButtons } from "react-native-paper";
 import uuid from "react-native-uuid";
 
-import { CalcInput, DatetimePicker, SelectInput, TextInput } from "@components";
+import {
+  AppbarAction,
+  CalcInput,
+  DatetimePicker,
+  SelectInput,
+  TextInput,
+} from "@components";
 import { Transaction, TransactionGroup, TransactionType } from "@models";
 import { useTransactionStore } from "@store/transaction";
-
-const AnimatedAction = Animated.createAnimatedComponent(Appbar.Action);
 
 interface Props {}
 
@@ -81,7 +84,7 @@ const AddTransaction: React.FC<Props> = () => {
 
   return (
     <View style={styles.container}>
-      <AnimatedAction
+      <AppbarAction
         sharedTransitionTag="add-transaction-tag"
         icon="chevron-left"
         mode="contained"
